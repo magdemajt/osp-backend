@@ -1,0 +1,20 @@
+version: "3.2"
+
+services:
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - mongo-cluster
+    environment:
+      - MONGO_INITDB_DATABASE=osp
+      - MONGO_INITDB_ROOT_USERNAME=osp
+      - MONGO_INITDB_ROOT_PASSWORD=devpass
+    volumes:
+      - ../../db-data:/data/db
+    restart: always
+
+networks:
+  mongo-cluster:
+
